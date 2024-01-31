@@ -1,0 +1,7 @@
+{
+    "editor.formatOnSave": false,
+    "editor.tabSize": 4,
+    "html.format.wrapAttributes": "force-expand-multiline",
+    "html.format.endWithNewline": true,
+    "editor.detectIndentation": false
+}

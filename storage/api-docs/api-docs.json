@@ -1,0 +1,203 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Filevine",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/twilio/send2faAuthCode": {
+            "post": {
+                "tags": [
+                    "Twilio Verification"
+                ],
+                "summary": "Send Verification Code",
+                "description": "Send and verify verification through twilo",
+                "operationId": "auth",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "api_token",
+                                    "to_number",
+                                    "request_domain",
+                                    "fv_project_id",
+                                    "user_ip"
+                                ],
+                                "properties": {
+                                    "api_token": {
+                                        "type": "string",
+                                        "example": "xxxx"
+                                    },
+                                    "request_domain": {
+                                        "type": "string",
+                                        "example": "test.com"
+                                    },
+                                    "to_number": {
+                                        "type": "string",
+                                        "example": "+1813463232,+1813463231,..."
+                                    },
+                                    "fv_project_id": {
+                                        "type": "string",
+                                        "example": "00000"
+                                    },
+                                    "user_ip": {
+                                        "type": "string",
+                                        "example": "000.000.000.0"
+                                    },
+                                    "tenant_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "bool",
+                                            "example": "true/false"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sent successfully"
+                                        },
+                                        "service_sid": {
+                                            "type": "string",
+                                            "example": "xxxxxxxxx"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/twilio/validate2faAuthCode": {
+            "post": {
+                "tags": [
+                    "Twilio Verification"
+                ],
+                "summary": "Verifiy Code sent to mobile",
+                "description": "Send and verify verification through twilo",
+                "operationId": "auth1",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "api_token",
+                                    "request_domain",
+                                    "verification_code",
+                                    "service_sids",
+                                    "fv_project_id",
+                                    "user_ip"
+                                ],
+                                "properties": {
+                                    "api_token": {
+                                        "type": "string",
+                                        "example": "xxxx"
+                                    },
+                                    "request_domain": {
+                                        "type": "string",
+                                        "example": "test.com"
+                                    },
+                                    "verification_code": {
+                                        "type": "string",
+                                        "example": "xxxxx"
+                                    },
+                                    "service_sid": {
+                                        "type": "string",
+                                        "example": "xxxxxxx"
+                                    },
+                                    "fv_project_id": {
+                                        "type": "string",
+                                        "example": "00000"
+                                    },
+                                    "user_ip": {
+                                        "type": "string",
+                                        "example": "000.000.000.0"
+                                    },
+                                    "tenant_id": {
+                                        "type": "string",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "bool",
+                                            "example": "true/false"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sent successfully"
+                                        },
+                                        "verified_contact_number": {
+                                            "type": "string",
+                                            "example": "+18132324324"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
